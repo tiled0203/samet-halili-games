@@ -16,14 +16,11 @@ public class CategoryJDBCRepository  {
 
     public List<Category> findAll() {
         ArrayList<Category> categories = new ArrayList<>();
-        try(PreparedStatement preparedStatement = createConnection().prepareStatement("SELECT c.id, c.category_name from category as c")){
+        try(PreparedStatement preparedStatement = DbLogin.createConnection().prepareStatement("SELECT c.id, c.category_name from category as c")){
             preparedStatement.execute();
             ResultSet resultSet = preparedStatement.getResultSet();
             while (resultSet.next()) {
-                Category.Builder category = new Category.Builder()
-                        .withId(resultSet.getInt("id"))
-                        .withCategoryName(resultSet.getString("category_name"));
-                categories.add(category.build());
+                categories.add(buildFromSet(resultSet).build());
             }
             return categories;
         }
@@ -35,16 +32,13 @@ public class CategoryJDBCRepository  {
 
     public Category findById(int id) {
         ArrayList<Category> categories = new ArrayList<>();
-        try(PreparedStatement preparedStatement = createConnection()
+        try(PreparedStatement preparedStatement = DbLogin.createConnection()
                 .prepareStatement("SELECT c.id, c.category_name from category as c WHERE c.id = ?")){
             preparedStatement.setInt(1, id);
             preparedStatement.execute();
             ResultSet resultSet = preparedStatement.getResultSet();
             resultSet.next();
-            Category.Builder category = new Category.Builder()
-                    .withId(resultSet.getInt("id"))
-                    .withCategoryName(resultSet.getString("category_name"));
-            return category.build();
+            return buildFromSet(resultSet).build();
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -52,14 +46,14 @@ public class CategoryJDBCRepository  {
         return null;
     }
 
-    public Connection createConnection() throws SQLException {
+    private Category.Builder buildFromSet(ResultSet resultSet) {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
+            return new Category.Builder()
+                    .withId(resultSet.getInt("id"))
+                    .withCategoryName(resultSet.getString("category_name"));
+        } catch (Exception e){
             e.printStackTrace();
+            return null;
         }
-        return DriverManager.getConnection(DbLogin.url
-                , DbLogin.username
-                , DbLogin.password);
     }
 }
