@@ -1,6 +1,5 @@
 package repositories;
 
-import domain.Category;
 import domain.Game;
 
 import java.sql.PreparedStatement;
@@ -26,7 +25,7 @@ public class GameJDBCRepository {
             preparedStatement.execute();
             ResultSet resultSet = preparedStatement.getResultSet();
             while (resultSet.next()) {
-                games.add(buildFromSet(resultSet).build());
+                games.add(buildFromSet(resultSet));
             }
             return games;
         }
@@ -43,7 +42,7 @@ public class GameJDBCRepository {
             preparedStatement.execute();
             ResultSet resultSet = preparedStatement.getResultSet();
             resultSet.next();
-            return buildFromSet(resultSet).build();
+            return buildFromSet(resultSet);
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -51,7 +50,7 @@ public class GameJDBCRepository {
         return null;
     }
 
-    private Game.Builder buildFromSet(ResultSet resultSet) {
+    private Game buildFromSet(ResultSet resultSet) {
         try {
             return new Game.Builder()
                     .withId(resultSet.getInt("id"))
@@ -66,7 +65,8 @@ public class GameJDBCRepository {
                     .withPlayDuration(resultSet.getString("play_duration"))
                     .withDifficultyId(resultSet.getInt("difficulty_id"))
                     .withPrice(resultSet.getBigDecimal("price"))
-                    .withImage(resultSet.getString("image"));
+                    .withImage(resultSet.getString("image"))
+                    .build();
         } catch (Exception e){
             e.printStackTrace();
             return null;
