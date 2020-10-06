@@ -5,26 +5,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Category {
+public class Difficulty {
     @Id @GeneratedValue
     private int id;
     @Column(nullable = false)
-    private String categoryName;
+    private String difficultyName;
 
     @OneToMany
     private List<Game> games = new ArrayList<>();
 
-    public Category(Builder builder) {
+    public Difficulty(Builder builder) {
         this.id = builder.id;
-        this.categoryName = builder.categoryName;
+        this.difficultyName = builder.difficultyName;
     }
 
-    public Category() {
+    public Difficulty() {
 
     }
 
-    public String getCategoryName() {
-        return categoryName;
+    public String getDifficultyName() {
+        return difficultyName;
     }
 
     public int getId() {
@@ -41,20 +41,20 @@ public class Category {
 
     public static class Builder {
         private int id;
-        private String categoryName;
+        private String difficultyName;
 
         public Builder withId(int id) {
             this.id = id;
             return this;
         }
 
-        public Builder withCategoryName(String categoryName) {
-            this.categoryName = categoryName;
+        public Builder withDifficultyName(String difficultyName) {
+            this.difficultyName = difficultyName;
             return this;
         }
 
-        public Category build() {
-            return new Category(this);
+        public Difficulty build() {
+            return new Difficulty(this);
         }
 
     }

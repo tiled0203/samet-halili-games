@@ -1,19 +1,41 @@
 package domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
+@Entity
 public class Game {
+    @Id @GeneratedValue
     private int id;
+    @Column(name = "category_id")
     private int categoryId;
+    @Column(name = "difficulty_id")
     private int difficultyId;
+    @Column(nullable = false)
+    @Size(min = 1, max = 50)
     private String gameName;
+    @Column(nullable = false)
+    @Size(min = 1, max = 50)
     private String editor;
+    @Column(nullable = false)
+    @Size(min = 1, max = 50)
     private String author;
+    @Column(nullable = false)
     private int yearEdition;
+    @Column(nullable = false)
+    @Size(min = 1, max = 20)
     private String age;
+    @Column(nullable = false)
     private int minPlayers;
+    @Column(nullable = false)
     private int maxPlayers;
+    @Size(min = 1, max = 20)
     private String playDuration;
+    @Column(nullable = false)
     private BigDecimal price;
     private String image;
 
@@ -31,6 +53,10 @@ public class Game {
         this.playDuration = builder.playDuration;
         this.price = builder.price;
         this.image = builder.image;
+    }
+
+    public Game() {
+
     }
 
     public int getId() {

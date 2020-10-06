@@ -1,14 +1,35 @@
 package domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.validation.constraints.Size;
+
+@Entity
 public class Borrower {
+    @Id @GeneratedValue
     private int id;
+    @Column(nullable = false)
+    @Size(min = 1, max = 40)
     private String borrowerName;
+    @Column(nullable = false)
+    @Size(min = 1, max = 30)
     private String street;
+    @Column(nullable = false)
+    @Size(min = 1, max = 5)
     private String houseNumber;
+    @Size(min = 1, max = 5)
     private String busNumber;
+    @Column(nullable = false)
     private int postCode;
+    @Column(nullable = false)
+    @Size(min = 1, max = 30)
     private String city;
+    @Size(min = 1, max = 10)
     private String telephone;
+    @Column(nullable = false)
+    @Size(min = 1, max = 40)
     private String email;
 
     public Borrower(Builder builder) {
@@ -21,6 +42,10 @@ public class Borrower {
         this.city = builder.city;
         this.telephone = builder.telephone;
         this.email = builder.email;
+    }
+
+    public Borrower() {
+
     }
 
     public int getId() {

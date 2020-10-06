@@ -1,4 +1,3 @@
-import commands.Command;
 import commands.CommandOptions;
 import commands.GamesWorker;
 
@@ -7,8 +6,7 @@ import java.util.*;
 import static java.lang.Thread.sleep;
 
 public class GamesApp {
-    private List<Command> commandList = new ArrayList<>();
-    private Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
     private boolean running = true;
 
     public static void main(String[] args) {
@@ -34,8 +32,9 @@ public class GamesApp {
         int commandNumber;
         if (scanner.hasNextInt()) commandNumber = scanner.nextInt();
         else {
-            commandNumber = 999;
+            commandNumber = -1;
             scanner.next();
+            String s = "";
         }
 
         if (commandNumber == 0) {
@@ -46,7 +45,7 @@ public class GamesApp {
         Optional<CommandOptions> optionalCommandOptions = Arrays.stream(CommandOptions.values())
                 .filter(commandOptions -> commandOptions.ordinal() == commandNumber - 1)
                 .findFirst();
-        if (!optionalCommandOptions.isPresent()) {
+        if (optionalCommandOptions == null) {
             System.err.println("Give in a correct number!");
             sleep(1500);
             start();
