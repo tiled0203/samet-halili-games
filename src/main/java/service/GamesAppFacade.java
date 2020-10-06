@@ -1,17 +1,27 @@
 package service;
 
-import domain.Borrower;
-import domain.Category;
-import domain.Game;
+import domain.*;
 
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+import javax.inject.Inject;
 import java.util.List;
 
+@Stateless
+@LocalBean
 public class GamesAppFacade {
-    CategoryService categoryService = new CategoryService();
-    GameService gameService = new GameService();
-    BorrowerService borrowerService = new BorrowerService();
+    @Inject
+    GameService gameService;
+    @Inject
+    CategoryService categoryService;
+    @Inject
+    DifficultyService difficultyService;
+    @Inject
+    BorrowerService borrowerService;
+    @Inject
+    BorrowService borrowService;
 
-    public Category findByIdCat(int id) {
+    public Category findByIdCategory(int id) {
         return categoryService.findById(id);
     }
 
@@ -19,7 +29,7 @@ public class GamesAppFacade {
         return gameService.findById(id);
     }
 
-    public List<Category> findAllCat() {
+    public List<Category> findAllCategories() {
         return categoryService.findAll();
     }
 
@@ -31,7 +41,23 @@ public class GamesAppFacade {
         return borrowerService.findAll();
     }
 
-    public Borrower findByIdBorrow(int id) {
+    public Borrower findByIdBorrower(int id) {
         return borrowerService.findById(id);
+    }
+
+    public List<Difficulty> findAllDifficulties() {
+        return difficultyService.findAll();
+    }
+
+    public Difficulty findByIdDifficulty(int id) {
+        return difficultyService.findById(id);
+    }
+
+    public List<Borrow> findAllBorrows() {
+        return borrowService.findAll();
+    }
+
+    public Borrow findByIdBorrow(int id) {
+        return borrowService.findById(id);
     }
 }

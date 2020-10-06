@@ -1,4 +1,4 @@
-package repositories;
+package repositories.jdbc;
 
 import domain.Category;
 

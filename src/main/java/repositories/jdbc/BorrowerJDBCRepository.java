@@ -1,7 +1,6 @@
-package repositories;
+package repositories.jdbc;
 
 import domain.Borrower;
-import domain.Category;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

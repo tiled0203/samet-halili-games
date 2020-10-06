@@ -1,12 +1,18 @@
 package service;
 
 import domain.Category;
-import repositories.CategoryJDBCRepository;
+import repositories.JPARepository;
 
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+import javax.inject.Inject;
 import java.util.List;
 
-public class CategoryService {
-    CategoryJDBCRepository categoryRepository = CategoryJDBCRepository.getInstance();
+@Stateless
+@LocalBean
+public class CategoryService implements Service<Category> {
+    @Inject
+    JPARepository<Category> categoryRepository;
 
     public List<Category> findAll() {
         return categoryRepository.findAll();

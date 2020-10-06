@@ -4,7 +4,7 @@
         jdbcDriver = com.mysql.cj.jdbc.Driver
         jdbcUrl = jdbc:mysql://localhost:3306/games
         jtaManaged = true
-        password =P@ssw0rd
+        password =
         userName =root
     </Resource>
 
@@ -12,7 +12,7 @@
         jdbcDriver = com.mysql.cj.jdbc.Driver
         jdbcUrl = jdbc:mysql://localhost:3306/games
         jtaManaged = false
-        password =P@ssw0rd
+        password =
         userName =root
     </Resource>
 </tomee>

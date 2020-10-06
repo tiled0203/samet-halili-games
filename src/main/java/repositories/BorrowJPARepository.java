@@ -1,6 +1,6 @@
 package repositories;
 
-import domain.Game;
+import domain.Borrow;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -8,17 +8,17 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Stateless
-public class GameJPARepository implements JPARepository<Game> {
+public class BorrowJPARepository implements JPARepository<Borrow> {
     @PersistenceContext(unitName = "gamePersistenceUnit")
     EntityManager em;
 
     @Override
-    public Game findById(int id) {
-        return em.find(Game.class, id);
+    public Borrow findById(int id) {
+        return em.find(Borrow.class, id);
     }
 
     @Override
-    public List<Game> findAll() {
-        return em.createQuery("select g from Game g", Game.class).getResultList();
+    public List<Borrow> findAll() {
+        return em.createQuery("SELECT bo FROM Borrow bo", Borrow.class).getResultList();
     }
 }

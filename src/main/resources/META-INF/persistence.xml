@@ -8,10 +8,14 @@
         <jta-data-source>games</jta-data-source>
         <non-jta-data-source>gamesUnmanaged</non-jta-data-source>
         <class>domain.Game</class>
+        <class>domain.Category</class>
+        <class>domain.Difficulty</class>
+        <class>domain.Borrower</class>
+        <class>domain.Borrow</class>
         <properties>
             <property name="hibernate.show_sql" value="true"/>
             <property name="javax.persistence.schema-generation.database.action"
-                      value="update"/>
+                      value="drop-and-create"/>
             <property name="javax.persistence.sql-load-script-source"
                       value="data.sql" />
             <property name="tomee.jpa.factory.lazy" value="true"/>

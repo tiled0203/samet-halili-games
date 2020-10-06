@@ -8,7 +8,7 @@ public class ShowFirstBorrow implements Command {
 
     @Override
     public void execute() {
-        Borrower borrower = gamesAppFacade.findByIdBorrow(1);
+        Borrower borrower = gamesAppFacade.findByIdBorrower(1);
         System.out.println("----------------------------------------");
         System.out.println("Showing the first borrower");
         System.out.println("Name: " + borrower.getBorrowerName() + " - City: " + borrower.getCity());

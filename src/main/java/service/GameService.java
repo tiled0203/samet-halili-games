@@ -1,20 +1,18 @@
 package service;
 
 import domain.Game;
-import repositories.GameJDBCRepository;
-import repositories.GameJPARepository;
+import repositories.JPARepository;
 
 import javax.ejb.LocalBean;
-import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.util.List;
 
 @Stateless
 @LocalBean
-public class GameService {
+public class GameService implements Service<Game> {
     @Inject
-    GameJPARepository gameRepository;
+    JPARepository<Game> gameRepository;
 
     public Game findById(int id) {
         return gameRepository.findById(id);

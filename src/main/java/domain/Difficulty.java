@@ -11,17 +11,12 @@ public class Difficulty {
     @Column(nullable = false)
     private String difficultyName;
 
-    @OneToMany
-    private List<Game> games = new ArrayList<>();
-
     public Difficulty(Builder builder) {
         this.id = builder.id;
         this.difficultyName = builder.difficultyName;
     }
 
-    public Difficulty() {
-
-    }
+    public Difficulty(){}
 
     public String getDifficultyName() {
         return difficultyName;
@@ -29,14 +24,6 @@ public class Difficulty {
 
     public int getId() {
         return id;
-    }
-
-    public List<Game> getGames() {
-        return games;
-    }
-
-    public void addGame(Game game) {
-        games.add(game);
     }
 
     public static class Builder {
