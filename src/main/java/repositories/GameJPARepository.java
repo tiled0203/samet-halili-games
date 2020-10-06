@@ -5,11 +5,13 @@ import domain.Game;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceUnit;
 import java.util.List;
 
 @Stateless
 public class GameJPARepository {
-    @Inject
+    @PersistenceContext(unitName = "gamePersistenceUnit")
     EntityManager em;
 
     public Game findById(int id) {
