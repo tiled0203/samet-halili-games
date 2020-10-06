@@ -7,4 +7,5 @@ import java.util.List;
 public interface JPARepository<T> {
     T findById(int id);
     List<T> findAll();
+    int add(T t);
 }

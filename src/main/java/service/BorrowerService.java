@@ -1,7 +1,7 @@
 package service;
 
 import domain.Borrower;
-import repositories.JPARepository;
+import repositories.BorrowerJPARepository;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -12,7 +12,7 @@ import java.util.List;
 @LocalBean
 public class BorrowerService implements Service<Borrower> {
     @Inject
-    JPARepository<Borrower> borrowerRepository;
+    BorrowerJPARepository borrowerRepository;
 
     @Override
     public List<Borrower> findAll() {

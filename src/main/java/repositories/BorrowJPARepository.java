@@ -2,12 +2,14 @@ package repositories;
 
 import domain.Borrow;
 
+import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Stateless
+@LocalBean
 public class BorrowJPARepository implements JPARepository<Borrow> {
     @PersistenceContext(unitName = "gamePersistenceUnit")
     EntityManager em;
@@ -20,5 +22,10 @@ public class BorrowJPARepository implements JPARepository<Borrow> {
     @Override
     public List<Borrow> findAll() {
         return em.createQuery("SELECT bo FROM Borrow bo", Borrow.class).getResultList();
+    }
+
+    @Override
+    public int add(Borrow borrow) {
+        return 0;
     }
 }

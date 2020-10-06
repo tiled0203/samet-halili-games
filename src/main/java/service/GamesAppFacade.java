@@ -60,4 +60,8 @@ public class GamesAppFacade {
     public Borrow findByIdBorrow(int id) {
         return borrowService.findById(id);
     }
+
+    public int addDifficulty(Difficulty d) {
+        return difficultyService.add(d);
+    }
 }

@@ -1,7 +1,7 @@
 package service;
 
 import domain.Difficulty;
-import repositories.JPARepository;
+import repositories.DifficultyJPARepository;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -12,7 +12,7 @@ import java.util.List;
 @LocalBean
 public class DifficultyService implements Service<Difficulty> {
     @Inject
-    JPARepository<Difficulty> difficultyRepository;
+    DifficultyJPARepository difficultyRepository;
 
     public Difficulty findById(int id) {
         return difficultyRepository.findById(id);
@@ -20,5 +20,9 @@ public class DifficultyService implements Service<Difficulty> {
 
     public List<Difficulty> findAll() {
         return difficultyRepository.findAll();
+    }
+
+    public int add(Difficulty d) {
+        return difficultyRepository.add(d);
     }
 }

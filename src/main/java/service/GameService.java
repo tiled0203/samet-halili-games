@@ -1,6 +1,7 @@
 package service;
 
 import domain.Game;
+import repositories.GameJPARepository;
 import repositories.JPARepository;
 
 import javax.ejb.LocalBean;
@@ -12,7 +13,7 @@ import java.util.List;
 @LocalBean
 public class GameService implements Service<Game> {
     @Inject
-    JPARepository<Game> gameRepository;
+    GameJPARepository gameRepository;
 
     public Game findById(int id) {
         return gameRepository.findById(id);

@@ -1,13 +1,11 @@
 package restservices;
 
 import domain.Game;
-import service.GameService;
 import service.GamesAppFacade;
 
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.validation.constraints.NotNull;
+import javax.ws.rs.*;
 import java.util.List;
 
 @Path("/game")
@@ -19,5 +17,11 @@ public class GameREST {
     @Produces("application/json")
     public List<Game> findGames() {
         return facade.findAllGame();
+    }
+
+    @Path("{gameId}")
+    @Produces("application/json") @GET
+    public Game findGameById(@NotNull @PathParam("gameId") int id) {
+        return facade.findByIdGame(id);
     }
 }

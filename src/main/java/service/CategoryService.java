@@ -1,7 +1,7 @@
 package service;
 
 import domain.Category;
-import repositories.JPARepository;
+import repositories.CategoryJPARepository;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -12,7 +12,7 @@ import java.util.List;
 @LocalBean
 public class CategoryService implements Service<Category> {
     @Inject
-    JPARepository<Category> categoryRepository;
+    CategoryJPARepository categoryRepository;
 
     public List<Category> findAll() {
         return categoryRepository.findAll();

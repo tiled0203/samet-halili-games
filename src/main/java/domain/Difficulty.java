@@ -6,7 +6,8 @@ import java.util.List;
 
 @Entity
 public class Difficulty {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(nullable = false)
     private String difficultyName;
@@ -24,6 +25,10 @@ public class Difficulty {
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public static class Builder {
