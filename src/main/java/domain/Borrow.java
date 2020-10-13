@@ -8,7 +8,13 @@ import java.time.LocalDate;
 public class Borrow {
     @Id @GeneratedValue
     private int id;
+    //TRAINER: use a join column
+    //@JoinColumn(name = "game_id")
+    //private Game game;
     private int gameId;
+    //TRAINER: use a join column
+    //@JoinColumn(name = "borrower_id")
+    //private Borrower borrower;
     private int borrowerId;
     @Column(nullable = false)
     private LocalDate borrowDate;

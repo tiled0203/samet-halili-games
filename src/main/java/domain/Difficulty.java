@@ -9,6 +9,7 @@ public class Difficulty {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    //TRAINER: you could use an enum for this
     @Column(nullable = false)
     private String difficultyName;
 

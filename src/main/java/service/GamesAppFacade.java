@@ -9,7 +9,9 @@ import java.util.List;
 
 @Stateless
 @LocalBean
+//TRAINER: very good
 public class GamesAppFacade {
+    //TRAINER: better to make these fields private so it can't be accessed by other classes.
     @Inject
     GameService gameService;
     @Inject

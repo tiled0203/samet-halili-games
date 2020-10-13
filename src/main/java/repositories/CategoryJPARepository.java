@@ -24,8 +24,5 @@ public class CategoryJPARepository implements JPARepository<Category> {
         return em.createQuery("select c from Category c", Category.class).getResultList();
     }
 
-    @Override
-    public int add(Category category) {
-        return 0;
-    }
+
 }

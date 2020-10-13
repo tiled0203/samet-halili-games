@@ -6,6 +6,7 @@ import java.util.*;
 
 import static java.lang.Thread.sleep;
 
+//TRAINER: nice work, but make sure to use JPA annotations where you can.
 public class GamesApp {
     private final Scanner scanner = new Scanner(System.in);
     private boolean running = true;
@@ -35,7 +36,7 @@ public class GamesApp {
         else {
             commandNumber = -1;
             scanner.next();
-            String s = "";
+            String s = ""; //TRAINER: is this used?
         }
 
         if (commandNumber == 0) {
@@ -46,7 +47,8 @@ public class GamesApp {
         Optional<CommandOptions> optionalCommandOptions = Arrays.stream(CommandOptions.values())
                 .filter(commandOptions -> commandOptions.ordinal() == commandNumber - 1)
                 .findFirst();
-        if (optionalCommandOptions == null) {
+//        if(!optionalCommandOptions.isPresent()) //TRAINER: example
+        if (optionalCommandOptions == null) { //TRAINER: this is always false, an optional is never null. Use isPresent on an optional and negate it
             System.err.println("Give in a correct number!");
             sleep(1500);
             start();

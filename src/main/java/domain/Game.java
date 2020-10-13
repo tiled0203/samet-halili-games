@@ -9,10 +9,17 @@ import java.math.BigDecimal;
 
 @Entity
 public class Game {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private int id;
+    //TRAINER: use a join column
+    //@JoinColumn(name = "category_id")
+    //private Category category;
     @Column(name = "category_id")
     private int categoryId;
+    //TRAINER: use a join column
+    //@JoinColumn(name = "difficulty_id")
+    //private Difficulty difficulty;
     @Column(name = "difficulty_id")
     private int difficultyId;
     @Column(nullable = false)

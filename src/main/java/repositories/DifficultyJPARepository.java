@@ -26,6 +26,7 @@ public class DifficultyJPARepository implements JPARepository<Difficulty> {
     }
 
     @Transactional
+    @Override
     public int add(Difficulty difficulty) {
         em.persist(difficulty);
         return difficulty.getId();

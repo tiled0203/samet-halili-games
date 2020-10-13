@@ -24,8 +24,5 @@ public class GameJPARepository implements JPARepository<Game> {
         return em.createQuery("select g from Game g", Game.class).getResultList();
     }
 
-    @Override
-    public int add(Game game) {
-        return 0;
-    }
+
 }

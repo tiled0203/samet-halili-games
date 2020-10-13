@@ -6,6 +6,7 @@ import javax.persistence.*;
 public class Category {
     @Id @GeneratedValue
     private int id;
+    //TRAINER: you could use an enum for this
     @Column(nullable = false)
     private String categoryName;
 

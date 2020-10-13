@@ -13,6 +13,9 @@ public class Borrower {
     @Column(nullable = false)
     @Size(min = 1, max = 40)
     private String borrowerName;
+
+    //TRAINER: An optional improvement could be that you can create a separate Address entity with address fields in it.
+    // and have a OneToOne or ManyToOne relationship with it, many borrowers can live on one address
     @Column(nullable = false)
     @Size(min = 1, max = 30)
     private String street;
@@ -99,6 +102,7 @@ public class Borrower {
                 '}';
     }
 
+    //TRAINER: Very good!
     public static class Builder {
         private int id;
         private String borrowerName;

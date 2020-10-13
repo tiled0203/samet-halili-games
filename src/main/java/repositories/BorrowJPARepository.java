@@ -24,8 +24,5 @@ public class BorrowJPARepository implements JPARepository<Borrow> {
         return em.createQuery("SELECT bo FROM Borrow bo", Borrow.class).getResultList();
     }
 
-    @Override
-    public int add(Borrow borrow) {
-        return 0;
-    }
+
 }
